@@ -1,7 +1,8 @@
 <?php
 include "Teatro.php";
 $unTeatro = new Teatro("Barcelona","Av.San Luis 745");
-echo "Un arreglo de la clase \"Teatro\" fue creado\n"; 
+echo "Un arreglo de la clase \"Teatro\" fue creado\n";
+//---
 do{
 
 echo "¿Qué acción desea realizar?

@@ -8,7 +8,7 @@ class Teatro{
 //------------constructor--------------------------
     /**
     * @param string $nombre
-    * @param string $direccion
+    * @param string $direccion--
     */
     public function __construct($nombre,$direccion){
         $this->nombre=$nombre;
