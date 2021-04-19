@@ -1,6 +1,11 @@
 <?php
 include "Teatro.php";
-$unTeatro = new Teatro("Barcelona","Av.San Luis 745");
+//include "Funcion.php"; 
+$arreglo=new Funcion("Default",1400,30,500);
+$arreglo2=new Funcion("Default2",1500,20,555);
+$arreglo3=new Funcion("Default3",2010,29,570);
+$arreglo4=new Funcion("Default4",1230,40,655);
+$unTeatro = new Teatro("Barcelona","Av.San Luis 745",$arreglo,$arreglo2,$arreglo3,$arreglo4);
 echo "Un arreglo de la clase \"Teatro\" fue creado\n";
 do{
 
@@ -55,63 +60,101 @@ switch(trim(fgets(STDIN))){
     case 3:
         if($accion == "visualizar")
         {
-            echo $unTeatro->getFuncion(0)."\n";
+            echo $unTeatro->getFuncionEspecifica(0)."\n";
         }
         else
         {
-            echo "Indique el nombre de la funcion: ";
+            echo "Indique el nombre de la función: ";
             $funcion = trim(fgets(STDIN));
+            echo "Indique el horario de la función: (ej: 1600, para las 16:00hs) ";
+            $horario = trim(fgets(STDIN));
+            echo "Indique la duración de la función: ";
+            $duracion = trim(fgets(STDIN));
             echo "Indique el precio: ";
             $precio = trim(fgets(STDIN));
+            $unTeatro->setFuncion(0,$funcion,$horario,$duracion,$precio);
 
-            $unTeatro->setFuncion(0,$funcion,$precio);
+            while($unTeatro->solapa(0)){
+                echo "El horario se solapa con el de otra funcion, indicar otro:";
+                $horario = trim(fgets(STDIN));
+                $unTeatro->setFuncion(0,$funcion,$horario,$duracion,$precio);
+            }
+
+            
         }
         break;
 
     case 4:
         if($accion == "visualizar")
         {
-            echo $unTeatro->getFuncion(1)."\n";
+            echo $unTeatro->getFuncionEspecifica(1)."\n";
         }
         else
         {
-            echo "Indique el nombre de la funcion: ";
+            echo "Indique el nombre de la función: ";
             $funcion = trim(fgets(STDIN));
+            echo "Indique el horario de la función: (ej: 1600, para las 16:00hs) ";
+            $horario = trim(fgets(STDIN));
+            echo "Indique la duración de la función: ";
+            $duracion = trim(fgets(STDIN));
             echo "Indique el precio: ";
             $precio = trim(fgets(STDIN));
+            $unTeatro->setFuncion(1,$funcion,$horario,$duracion,$precio);
 
-            $unTeatro->setFuncion(1,$funcion,$precio);
+            while($unTeatro->solapa(1)){
+                echo "El horario se solapa con el de otra funcion, indicar otro:";
+                $horario = trim(fgets(STDIN));
+                $unTeatro->setFuncion(1,$funcion,$horario,$duracion,$precio);
+            }
         }
         break;
         
     case 5:
         if($accion == "visualizar")
         {
-            echo $unTeatro->getFuncion(2)."\n";
+            echo $unTeatro->getFuncionEspecifica(2)."\n";
         }
         else
         {
-            echo "Indique el nombre de la funcion: ";
+            echo "Indique el nombre de la función: ";
             $funcion = trim(fgets(STDIN));
+            echo "Indique el horario de la función: (ej: 1600, para las 16:00hs) ";
+            $horario = trim(fgets(STDIN));
+            echo "Indique la duración de la función: ";
+            $duracion = trim(fgets(STDIN));
             echo "Indique el precio: ";
             $precio = trim(fgets(STDIN));
+            $unTeatro->setFuncion(2,$funcion,$horario,$duracion,$precio);
 
-            $unTeatro->setFuncion(2,$funcion,$precio);
+            while($unTeatro->solapa(2)){
+                echo "El horario se solapa con el de otra funcion, indicar otro:";
+                $horario = trim(fgets(STDIN));
+                $unTeatro->setFuncion(2,$funcion,$horario,$duracion,$precio);
+            }
         }
         break;
     case 6:
         if($accion == "visualizar")
         {
-            echo $unTeatro->getFuncion(3)."\n";
+            echo $unTeatro->getFuncionEspecifica(3)."\n";
         }
         else
         {
-            echo "Indique el nombre de la funcion: ";
+            echo "Indique el nombre de la función: ";
             $funcion = trim(fgets(STDIN));
+            echo "Indique el horario de la función: (ej: 1600, para las 16:00hs) ";
+            $horario = trim(fgets(STDIN));
+            echo "Indique la duración de la función: ";
+            $duracion = trim(fgets(STDIN));
             echo "Indique el precio: ";
             $precio = trim(fgets(STDIN));
+            $unTeatro->setFuncion(3,$funcion,$horario,$duracion,$precio);
 
-            $unTeatro->setFuncion(3,$funcion,$precio);
+            while($unTeatro->solapa(3)){
+                echo "El horario se solapa con el de otra funcion, indicar otro:";
+                $horario = trim(fgets(STDIN));
+                $unTeatro->setFuncion(3,$funcion,$horario,$duracion,$precio);
+            }
         }
         break;
 }
@@ -120,8 +163,8 @@ switch(trim(fgets(STDIN))){
 echo "¿Desea realizar otra accion? si-no\n";
 $r=trim(fgets(STDIN));
 
-}while($r=="si");
+}while($r == "si");
 
-//$unTeatro->__toString(); QUITAR COMENTARIO PARA VISUALIZAR TODOS LOS ELEMENTOS DEL OBJETO
+//$unTeatro->__toString(); //QUITAR COMENTARIO PARA VISUALIZAR TODOS LOS ELEMENTOS DEL OBJETO
 
 ?>
